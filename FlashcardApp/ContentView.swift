@@ -7,47 +7,92 @@
 
 import SwiftUI
 import SwiftData
+import LaTeXSwiftUI
 
-struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+struct CardView: View {
+    @Binding var showResponse: Bool
+    var text: String
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        RoundedRectangle(cornerRadius: 13, style: .continuous)
+            .fill(showResponse ? Color.blue : Color.white)
+            .frame(width: 300, height: 500)
+            .overlay(
+                ZStack(alignment: .topLeading) {
+                    LaTeX(text)
+                        .fontDesign(.serif)
+                        .font(.title)
+                        .padding(16)
+                        .foregroundColor(showResponse ? .white : .black)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: showResponse ? .center : .topLeading)
+                        .animation(.spring(), value: showResponse)
+
+                    if !showResponse {
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Text("Calculus")
+                                    .font(.caption)
+                                    .foregroundColor(.black.opacity(0.5))
+                                Spacer()
+                                Circle()
+                                    .fill(Color.black)
+                                    .frame(width: 10, height: 10)
+                            }
+                        }
+                        .padding(16)
+                    } else {
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Button(action: {
+                                }) {
+                                    Label("Again", systemImage: "hand.thumbsdown")
+                                }
+                                .buttonStyle(.bordered)
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                }) {
+                                    Label("Good", systemImage: "hand.thumbsup")
+                                }
+                                .buttonStyle(.bordered)
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                }) {
+                                    Label("Easy", systemImage: "lightbulb")
+                                }
+                                .buttonStyle(.bordered)
+                            }
+                        }
+                        .padding(16)
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-            .toolbar {
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+            )
+            .onTapGesture {
+                withAnimation {
+                    showResponse.toggle()
                 }
             }
-        } detail: {
-            Text("Select an item")
-        }
+            .padding()
     }
+}
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
+// Main ContentView
+struct ContentView: View {
+    @State private var showResponse1 = false
+    @State private var showResponse2 = false
+    // Add more state variables if you have more cards.
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+    var body: some View {
+        ScrollView {
+            VStack {
+                CardView(showResponse: $showResponse1, text: "What is the value of  $e^{i\\pi}+1$?")
+                CardView(showResponse: $showResponse2, text: "Another question?")
+                // Add more CardView instances if needed.
             }
         }
     }
