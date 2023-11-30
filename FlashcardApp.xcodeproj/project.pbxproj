@@ -14,6 +14,9 @@
 		28BF666E2B14F096003CB2CA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BF666D2B14F096003CB2CA /* Preview Assets.xcassets */; };
 		28BF66772B14F197003CB2CA /* LaTeXSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 28BF66762B14F197003CB2CA /* LaTeXSwiftUI */; };
 		28BF66792B14F1A9003CB2CA /* LaTeXSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 28BF66782B14F1A9003CB2CA /* LaTeXSwiftUI */; };
+		28DC380C2B18EE84003F88AC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC380B2B18EE84003F88AC /* Home.swift */; };
+		28DC380F2B18F5EC003F88AC /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC380E2B18F5EC003F88AC /* Deck.swift */; };
+		28DC38132B18FB0B003F88AC /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC38122B18FB0B003F88AC /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		28BF666A2B14F096003CB2CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28BF666D2B14F096003CB2CA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28BF666F2B14F096003CB2CA /* FlashcardApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlashcardApp.entitlements; sourceTree = "<group>"; };
+		28DC380B2B18EE84003F88AC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		28DC380E2B18F5EC003F88AC /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		28DC38122B18FB0B003F88AC /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,8 @@
 			children = (
 				28BF66642B14F095003CB2CA /* FlashcardAppApp.swift */,
 				28BF66662B14F095003CB2CA /* ContentView.swift */,
+				28DC380D2B18F5D3003F88AC /* Model */,
+				28DC380A2B18EE75003F88AC /* View */,
 				28BF66682B14F095003CB2CA /* Item.swift */,
 				28BF666A2B14F096003CB2CA /* Assets.xcassets */,
 				28BF666F2B14F096003CB2CA /* FlashcardApp.entitlements */,
@@ -74,6 +82,23 @@
 				28BF666D2B14F096003CB2CA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		28DC380A2B18EE75003F88AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28DC380B2B18EE84003F88AC /* Home.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28DC380D2B18F5D3003F88AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				28DC380E2B18F5EC003F88AC /* Deck.swift */,
+				28DC38122B18FB0B003F88AC /* Card.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,7 +179,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				28BF66672B14F095003CB2CA /* ContentView.swift in Sources */,
+				28DC38132B18FB0B003F88AC /* Card.swift in Sources */,
 				28BF66692B14F095003CB2CA /* Item.swift in Sources */,
+				28DC380F2B18F5EC003F88AC /* Deck.swift in Sources */,
+				28DC380C2B18EE84003F88AC /* Home.swift in Sources */,
 				28BF66652B14F095003CB2CA /* FlashcardAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,7 +314,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FlashcardApp/FlashcardApp.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -314,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FlashcardApp/FlashcardApp.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

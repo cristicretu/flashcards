@@ -28,5 +28,9 @@ struct FlashcardAppApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        
+        #if os(macOS)
+        .windowStyle(HiddenTitleBarWindowStyle())
+        #endif
     }
 }

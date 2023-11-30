@@ -56,28 +56,32 @@ struct CardView: View {
 struct ContentView: View {
     @State private var isPressed = false
 
+//    var body: some View {
+//        ScrollView {
+//            VStack {
+//                ForEach(0..<10) { index in
+//                    CardView()
+//                        .padding()
+//                        .onLongPressGesture(minimumDuration: 0.5, pressing: { isPressing in
+//                            withAnimation(.easeInOut) {
+//                                self.isPressed = isPressing
+//                            }
+//                        }, perform: {
+//                            // Perform the action to reveal the answer here
+//                        })
+//                }
+//            }
+//        }
+//    }
+    
     var body: some View {
-        ScrollView {
-            VStack {
-                ForEach(0..<10) { index in
-                    CardView()
-                        .padding()
-                        .onLongPressGesture(minimumDuration: 0.5, pressing: { isPressing in
-                            withAnimation(.easeInOut) {
-                                self.isPressed = isPressing
-                            }
-                        }, perform: {
-                            // Perform the action to reveal the answer here
-                        })
-                }
-            }
-        }
+        Home()
+            .buttonStyle(BorderedButtonStyle())
+            .textFieldStyle(PlainTextFieldStyle())
     }
 }
 
 #Preview {
     ContentView()
-        .background(Color.white.ignoresSafeArea())
-        .frame(width: .infinity, height: 800)
         .modelContainer(for: Item.self, inMemory: true)
 }
