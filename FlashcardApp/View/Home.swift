@@ -33,7 +33,7 @@ struct Home: View {
     
     @ViewBuilder
     func MainContent() -> some View {
-        VStack (spacing: 15) {
+        VStack (spacing: 10) {
             // search
             HStack (spacing: 11) {
                 Image(systemName: "magnifyingglass")
@@ -46,26 +46,63 @@ struct Home: View {
             }
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
             .padding(.bottom, isMacOS() ? 0 : 10)
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack (alignment: .leading, spacing: 15) {
+                    Text("Decks")
+                        .font(.system(size: 24, weight: .medium, design: .rounded))
+                    
+                    // cols
+                    let columns = Array(repeating: GridItem(.flexible(), spacing: isMacOS() ? 25 : 15), count: isMacOS() ? 3 : 1)
+                    
+                    LazyVGrid(columns: columns, spacing: 25) {
+                        ForEach(decks) { deck in
+                            DeckView(deck: deck)
+                        }
+                    }
+
+                }
+                .padding(.top, isMacOS() ? 25 : 15)
+            }
         }
+        
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .top)
         .padding(.top, isMacOS() ? 40 : 15)
         .padding(.horizontal, 25)
-        
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack (spacing: 15) {
-                Text("Decks")
-                    .font(.system(size: 24, weight: .medium, design: .rounded))
+    }
+    
+    @ViewBuilder
+    func DeckView(deck: Deck) -> some View {
+        VStack {
+            Text(deck.name)
+                .font(.system(size: isMacOS() ? 18 : 14, weight: .medium, design: .rounded))
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            HStack {
+                Text(String(deck.cards.count) + " cards")
+                    .foregroundStyle(.black)
+                    .opacity(0.8)
                 
-                // cols
-                let columns = Array(repeating: GridItem(.flexible(), spacing: isMacOS() ? 25 : 15), count: isMacOS() ? 3 : 1)
+                Spacer(minLength: 0)
                 
-                LazyVGrid(columns: columns, spacing: 25) {
+                // edit btn
+                Button {
                     
+                } label: {
+                    Image(systemName: "pencil")
+                        .font(.system(size: 15, weight: .bold))
+                        .padding(8)
+                        .foregroundColor(.white)
+                        .background(Color.black)
+                        .clipShape(Circle())
                 }
-
             }
-            .padding(.top, isMacOS() ? 45 : 30)
+            .padding(.top, 55)
         }
+        .padding()
+        .background(Color.red.opacity(0.9))
+        .cornerRadius(13)
     }
     
     @ViewBuilder

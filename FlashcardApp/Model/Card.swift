@@ -11,5 +11,5 @@ struct Card {
     var id: UUID
     var front: String
     var back: String
-    var deckID: UUID
+//    var deckID: UUID
 }
