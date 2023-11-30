@@ -17,6 +17,7 @@
 		28DC380C2B18EE84003F88AC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC380B2B18EE84003F88AC /* Home.swift */; };
 		28DC380F2B18F5EC003F88AC /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC380E2B18F5EC003F88AC /* Deck.swift */; };
 		28DC38132B18FB0B003F88AC /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC38122B18FB0B003F88AC /* Card.swift */; };
+		28DC38152B190E23003F88AC /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC38142B190E23003F88AC /* Tag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		28DC380B2B18EE84003F88AC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		28DC380E2B18F5EC003F88AC /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		28DC38122B18FB0B003F88AC /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		28DC38142B190E23003F88AC /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				28DC380E2B18F5EC003F88AC /* Deck.swift */,
 				28DC38122B18FB0B003F88AC /* Card.swift */,
+				28DC38142B190E23003F88AC /* Tag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				28BF66672B14F095003CB2CA /* ContentView.swift in Sources */,
 				28DC38132B18FB0B003F88AC /* Card.swift in Sources */,
 				28BF66692B14F095003CB2CA /* Item.swift in Sources */,
+				28DC38152B190E23003F88AC /* Tag.swift in Sources */,
 				28DC380F2B18F5EC003F88AC /* Deck.swift in Sources */,
 				28DC380C2B18EE84003F88AC /* Home.swift in Sources */,
 				28BF66652B14F095003CB2CA /* FlashcardAppApp.swift in Sources */,
@@ -331,8 +335,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.cretu.FlashcardApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -359,8 +366,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.cretu.FlashcardApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

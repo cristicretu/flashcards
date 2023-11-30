@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import LaTeXSwiftUI
 
 struct CardView: View {
     @State private var isPressed = false
@@ -55,6 +54,16 @@ struct CardView: View {
 
 struct ContentView: View {
     @State private var isPressed = false
+    @Environment(\.modelContext) private var modelContext
+    
+//    @Query(sort: [.init(\Deck.name),], animation: .bouncy)
+    @Query var decks: [Deck]
+    
+    
+//    private var decks: [Deck]
+    
+    
+
 
 //    var body: some View {
 //        ScrollView {
@@ -75,13 +84,58 @@ struct ContentView: View {
 //    }
     
     var body: some View {
-        Home()
+        Home(decks: decks)
             .buttonStyle(BorderedButtonStyle())
             .textFieldStyle(PlainTextFieldStyle())
+        
+        HStack {
+            Button (action:  {
+                addDeck()
+            }, label: {
+                Text("God Bless")
+            })
+            
+            Button (action:  {
+                deleteDeck()
+            }, label: {
+                Text("Dilit")
+            })
+        }
+        
+        
     }
+    
+    private func addDeck() {
+        print(decks.count)
+        
+        let newDeck = Deck(
+            id: UUID(),
+            name: "Math",
+            cards: [
+                Card(id: UUID(), front: "What is 2 + 2?", back: "The answer is 4."),
+                Card(id: UUID(), front: "What is the square root of 9?", back: "The answer is 3."),
+                Card(id: UUID(), front: "Solve x in the equation 2x = 10", back: "x equals 5.")
+            ]
+        )
+        modelContext.insert(newDeck)
+        
+        print("after is ")
+        print(decks.count)
+    }
+    
+    private func deleteDeck() {
+        let n = decks.count
+        for i in (0...n-1) {
+            var _ = modelContext.delete(decks[i])
+        }
+        print(decks)
+    }
+
+    
+    
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: Deck.self)
 }

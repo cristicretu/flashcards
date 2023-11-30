@@ -5,11 +5,22 @@
 //  Created by Cristian Cretu on 30.11.2023.
 //
 
-import SwiftUI
+import Foundation
+import SwiftData
 
-struct Card {
+@Model
+final class Card {
+    @Attribute(.unique)
     var id: UUID
     var front: String
     var back: String
-//    var deckID: UUID
+    
+    var tags: [Tag]?
+    
+    
+    init(id: UUID, front: String, back: String) {
+        self.id = id
+        self.front = front
+        self.back = back
+    }
 }

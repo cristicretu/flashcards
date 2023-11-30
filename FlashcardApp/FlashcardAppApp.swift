@@ -12,7 +12,7 @@ import SwiftData
 struct FlashcardAppApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Deck.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -27,7 +27,8 @@ struct FlashcardAppApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
+//        .modelContainer(sharedModelContainer)
+        .modelContainer(for: Deck.self)
         
         #if os(macOS)
         .windowStyle(HiddenTitleBarWindowStyle())

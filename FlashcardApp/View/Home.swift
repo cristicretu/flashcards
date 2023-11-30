@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Home: View {
+    var decks: [Deck]
+    
+    
     var body: some View {
         HStack(spacing: 0){
             
@@ -22,7 +25,7 @@ struct Home: View {
                 }
             }
             
-            MainContent()
+            MainContent(decks: decks)
             
             
         }
@@ -32,7 +35,7 @@ struct Home: View {
     }
     
     @ViewBuilder
-    func MainContent() -> some View {
+    func MainContent(decks: [Deck]) -> some View {
         VStack (spacing: 10) {
             // search
             HStack (spacing: 11) {
@@ -139,14 +142,14 @@ struct Home: View {
     }
 }
 
-#Preview {
-    Home()
-}
+//#Preview {
+//    Home()
+//}
 
 extension View {
     func getRect() -> CGRect {
         #if os(iOS)
-        return UISreen.main.bounds
+        return UIScreen.main.bounds
         #else
         return NSScreen.main!.visibleFrame
         #endif

@@ -5,12 +5,22 @@
 //  Created by Cristian Cretu on 30.11.2023.
 //
 
+import Foundation
+import SwiftData
 import SwiftUI
 
-struct Deck: Identifiable {
+@Model
+final class Deck {
     var id: UUID
     var name: String
     var cards: [Card]
+    
+    init(id: UUID, name: String, cards: [Card]) {
+        self.id = id
+        self.name = name
+        self.cards = cards
+    }
+
 }
 
 // mock data
